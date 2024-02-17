@@ -11,20 +11,12 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                // Install dependencies using the requirements.txt file
-                script {
-                    sh 'pip install -r requirements.txt'
-                }
+                echo 'Install dependencies using the requirements.txt file'
+                sh 'pip install -r requirements.txt'
+               
             }
         }
 
-        stage('Run Flask Application') {
-            steps {
-                // Run your Flask application
-                script {
-                    sh 'python app.py'
-                }
-            }
-        }
+       
     }
 }
