@@ -1,0 +1,30 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout') {
+            steps {
+                // Checkout your source code from version control
+                git 'https://github.com/vcjain/jenkins-python.git'
+            }
+        }
+
+        stage('Install Dependencies') {
+            steps {
+                // Install dependencies using the requirements.txt file
+                script {
+                    sh 'pip install -r requirements.txt'
+                }
+            }
+        }
+
+        stage('Run Flask Application') {
+            steps {
+                // Run your Flask application
+                script {
+                    sh 'python app.py'
+                }
+            }
+        }
+    }
+}
