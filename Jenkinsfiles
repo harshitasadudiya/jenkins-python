@@ -16,15 +16,12 @@ pipeline {
             steps {
                 echo 'Install dependencies using the requirements.txt file'
                 sh '''
-                    # Ensure venv is available
-                    sudo apt-get update
-                    sudo apt-get install -y python3-venv
+                    apt-get update
+                    apt-get install -y python3-venv
 
-                    # Create and activate virtual environment
                     python3 -m venv venv
                     . venv/bin/activate
 
-                    # Upgrade pip and install dependencies
                     python -m pip install --upgrade pip
                     pip install -r requirements.txt
                 '''
